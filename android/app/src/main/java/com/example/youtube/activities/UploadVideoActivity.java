@@ -24,6 +24,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.youtube.R;
 import com.example.youtube.entities.UserSession;
 import com.example.youtube.model.VideoSession;
+import com.example.youtube.utils.TokenManager;
 import com.example.youtube.view_model.UserViewModel;
 
 import java.io.File;
@@ -48,6 +49,7 @@ public class UploadVideoActivity extends AppCompatActivity {
     private EditText editTextUploaderID;
     private UserViewModel userViewModel;
     private UserSession userSession;
+    private TokenManager tokenManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class UploadVideoActivity extends AppCompatActivity {
         Button buttonUpload = findViewById(R.id.button_upload);
         Button buttonBackToHome = findViewById(R.id.button_back_to_home);
         imageView = findViewById(R.id.image_view);
-
+        tokenManager = new TokenManager(this);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         userSession = UserSession.getInstance();
 
@@ -132,7 +134,9 @@ public class UploadVideoActivity extends AppCompatActivity {
         RequestBody topicRequestBody = RequestBody.create(MediaType.parse("text/plain"), topic);
         RequestBody uploaderIDRequestBody = RequestBody.create(MediaType.parse("text/plain"), uploaderId);
 
-        userViewModel.createVideo(uploaderIDRequestBody, videoPart, imagePart, titleRequestBody, descriptionRequestBody, topicRequestBody).observe(this, new Observer<VideoSession>() {
+        String token = tokenManager.getToken(); // Get the token
+
+        userViewModel.createVideo(token, uploaderIDRequestBody, videoPart, imagePart, titleRequestBody, descriptionRequestBody, topicRequestBody).observe(this, new Observer<VideoSession>() {
             @Override
             public void onChanged(VideoSession video) {
                 if (video != null) {

@@ -124,8 +124,8 @@ public class UserAPI {
             }
         });
     }
-    public void createVideo(RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic, Callback<VideoSession> callback) {
-        Call<VideoSession> call = apiService.createVideo(userId, videoFile, thumbnailFile, title, description, topic);
+    public void createVideo(String token, RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic, Callback<VideoSession> callback) {
+        Call<VideoSession> call = apiService.createVideo("Bearer " + token, userId, videoFile, thumbnailFile, title, description, topic);
         call.enqueue(new Callback<VideoSession>() {
             @Override
             public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
@@ -149,6 +149,7 @@ public class UserAPI {
             }
         });
     }
+
     public void getUserDisplayName(String userId, Callback<UserDisplayNameResponse> callback) {
         Call<UserDisplayNameResponse> call = apiService.getUserDisplayName(userId);
         call.enqueue(new Callback<UserDisplayNameResponse>() {

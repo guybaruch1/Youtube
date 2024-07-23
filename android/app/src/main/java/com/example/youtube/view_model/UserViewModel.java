@@ -102,9 +102,9 @@ public class UserViewModel extends AndroidViewModel {
         return liveData;
     }
 
-    public LiveData<VideoSession> createVideo(RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic) {
+    public LiveData<VideoSession> createVideo(String token, RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic) {
         MutableLiveData<VideoSession> liveData = new MutableLiveData<>();
-        mRepository.createVideo(userId, videoFile, thumbnailFile, title, description, topic, new Callback<VideoSession>() {
+        mRepository.createVideo(token, userId, videoFile, thumbnailFile, title, description, topic, new Callback<VideoSession>() {
             @Override
             public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
                 if (response.isSuccessful()) {
@@ -121,6 +121,7 @@ public class UserViewModel extends AndroidViewModel {
         });
         return liveData;
     }
+
 
     public LiveData<String> getUserDisplayName(String id) {
         MutableLiveData<String> liveData = new MutableLiveData<>();

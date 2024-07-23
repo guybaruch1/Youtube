@@ -81,6 +81,7 @@ public interface UserApiService {
     @Multipart
     @POST("api/users/{id}/videos")
     Call<VideoSession> createVideo(
+            @Header("Authorization") String token,
             @Part("uploaderId") RequestBody uploaderId,
             @Part MultipartBody.Part videoFile,
             @Part MultipartBody.Part thumbnailFile,
@@ -88,6 +89,7 @@ public interface UserApiService {
             @Part("description") RequestBody description,
             @Part("topic") RequestBody topic
     );
+
 
     @GET("api/users/{id}/videos/{pid}")
     Call<VideoSession> getVideoById(@Path("id") String userId, @Path("pid") String videoId);

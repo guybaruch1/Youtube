@@ -35,9 +35,10 @@ public class UserRepository {
         userAPI.verifyUser(token, callback);
     }
 
-    public void createVideo(RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic, Callback<VideoSession> callback) {
-        userAPI.createVideo(userId, videoFile, thumbnailFile, title, description, topic, callback);
+    public void createVideo(String token, RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic, Callback<VideoSession> callback) {
+        userAPI.createVideo(token, userId, videoFile, thumbnailFile, title, description, topic, callback);
     }
+
     public void getUserDisplayName(String userId, Callback<UserDisplayNameResponse> callback) {
         userAPI.getUserDisplayName(userId, callback);
     }

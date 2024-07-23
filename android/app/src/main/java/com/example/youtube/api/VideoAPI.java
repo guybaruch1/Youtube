@@ -1,14 +1,18 @@
 package com.example.youtube.api;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.youtube.model.VideoSession;
 import com.example.youtube.utils.RetrofitInstance;
+import com.example.youtube.utils.TokenManager;
 
 import java.io.IOException;
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -16,9 +20,11 @@ import retrofit2.Response;
 public class VideoAPI {
     private static final String TAG = VideoAPI.class.getSimpleName();
     private VideoApiService apiService;
+    private TokenManager tokenManager;
 
-    public VideoAPI() {
+    public VideoAPI(Context context) {
         apiService = RetrofitInstance.getRetrofitInstance().create(VideoApiService.class);
+        tokenManager = new TokenManager(context);
     }
     public void getMostViewedAndRandomVideos(Callback<List<VideoSession>> callback) {
         Call<List<VideoSession>> call = apiService.getMostViewedAndRandomVideos();
@@ -91,6 +97,7 @@ public class VideoAPI {
     }
 
     public void deleteVideoById(String videoId) {
+
         Call<Void> call = apiService.deleteVideoById(videoId);
         call.enqueue(new Callback<Void>() {
             @Override
@@ -135,4 +142,30 @@ public class VideoAPI {
         });
     }
 
+    public void createVideo(RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic, Callback<VideoSession> callback) {
+        String token = tokenManager.getToken(); // Get the token
+        Call<VideoSession> call = apiService.createVideo("Bearer " + token, userId, videoFile, thumbnailFile, title, description, topic);
+        call.enqueue(new Callback<VideoSession>() {
+            @Override
+            public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
+                if (response.isSuccessful()) {
+                    callback.onResponse(call, response);
+                } else {
+                    Log.e(TAG, "Video creation failed with response code: " + response.code());
+                    try {
+                        Log.e(TAG, "Response error body: " + response.errorBody().string());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    callback.onFailure(call, new Throwable("Video creation failed with response code: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VideoSession> call, Throwable t) {
+                Log.e(TAG, "Video creation failed: " + t.getMessage());
+                callback.onFailure(call, t);
+            }
+        });
+    }
 }

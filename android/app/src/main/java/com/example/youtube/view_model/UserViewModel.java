@@ -102,25 +102,7 @@ public class UserViewModel extends AndroidViewModel {
         return liveData;
     }
 
-    public LiveData<VideoSession> createVideo(String token, RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic) {
-        MutableLiveData<VideoSession> liveData = new MutableLiveData<>();
-        mRepository.createVideo(token, userId, videoFile, thumbnailFile, title, description, topic, new Callback<VideoSession>() {
-            @Override
-            public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
-                if (response.isSuccessful()) {
-                    liveData.setValue(response.body());
-                } else {
-                    liveData.setValue(null);
-                }
-            }
 
-            @Override
-            public void onFailure(Call<VideoSession> call, Throwable t) {
-                liveData.setValue(null);
-            }
-        });
-        return liveData;
-    }
 
 
     public LiveData<String> getUserDisplayName(String id) {

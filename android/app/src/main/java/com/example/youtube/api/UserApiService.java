@@ -78,17 +78,7 @@ public interface UserApiService {
     @GET("api/users/{id}/videos")
     Call<List<VideoSession>> getVideosByUploader(@Path("id") String id);
 
-    @Multipart
-    @POST("api/users/{id}/videos")
-    Call<VideoSession> createVideo(
-            @Header("Authorization") String token,
-            @Part("uploaderId") RequestBody uploaderId,
-            @Part MultipartBody.Part videoFile,
-            @Part MultipartBody.Part thumbnailFile,
-            @Part("title") RequestBody title,
-            @Part("description") RequestBody description,
-            @Part("topic") RequestBody topic
-    );
+
 
 
     @GET("api/users/{id}/videos/{pid}")

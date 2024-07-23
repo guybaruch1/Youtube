@@ -13,6 +13,8 @@ import com.example.youtube.repository.VideoRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -23,7 +25,7 @@ public class VideoViewModel extends AndroidViewModel {
 
     public VideoViewModel(@NonNull Application application) {
         super(application);
-        videoRepository = new VideoRepository();
+        videoRepository = new VideoRepository(application.getApplicationContext());
     }
 
     public LiveData<List<VideoSession>> getMostViewedAndRandomVideos() {
@@ -88,6 +90,26 @@ public class VideoViewModel extends AndroidViewModel {
 
             @Override
             public void onFailure(retrofit2.Call<List<VideoSession>> call, Throwable t) {
+                liveData.setValue(null);
+            }
+        });
+        return liveData;
+    }
+
+    public LiveData<VideoSession> createVideo(RequestBody userId, MultipartBody.Part videoFile, MultipartBody.Part thumbnailFile, RequestBody title, RequestBody description, RequestBody topic) {
+        MutableLiveData<VideoSession> liveData = new MutableLiveData<>();
+        videoRepository.createVideo(userId, videoFile, thumbnailFile, title, description, topic, new Callback<VideoSession>() {
+            @Override
+            public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
+                if (response.isSuccessful()) {
+                    liveData.setValue(response.body());
+                } else {
+                    liveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VideoSession> call, Throwable t) {
                 liveData.setValue(null);
             }
         });

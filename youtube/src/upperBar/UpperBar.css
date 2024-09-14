@@ -1,0 +1,37 @@
+.upper-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's above other content */
+  height: 60px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
+.no-outline:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.custom-button:hover {
+  background-color: #EEEDE7;
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.centered-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.push-down{
+  margin-top: 12px;
+}
+
+.my-height{
+  height: 60px;
+}
+

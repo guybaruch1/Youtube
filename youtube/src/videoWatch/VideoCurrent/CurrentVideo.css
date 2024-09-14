@@ -1,0 +1,53 @@
+.video-player {
+  width: 800px;
+  height: 500px;
+  border-radius: 2%;
+}
+
+.video-buttons img {
+  width: 100px;
+  /* Adjust image size if needed */
+  height: 35px;
+}
+
+.comment-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.current-video {
+  /* display: flex;  */
+  /* Adjust flex direction if needed */
+  flex-direction: column;
+  /* Stack video and details vertically */
+}
+
+.video-details-box {
+  background-color: #f9f9f9; /* Light gray background */
+  border: 1px solid #ddd; /* Border to make it stand out */
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.video-header h4 {
+  margin: 0;
+}
+
+.video-header p {
+  margin: 0 0 10px 0;
+  color: #666;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.dark-mode .video-details-box {
+  background-color: #333; /* Dark gray background */
+  border-color: #555; /* Darker border */
+  color: #ddd; /* Light text color */
+}
+
+.dark-mode .video-header p {
+  color: #bbb;
+}

@@ -1,0 +1,43 @@
+.card {
+  width: 18rem;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--card-background-color);
+  color: var(--card-text-color);
+}
+
+.sug-card-body {
+  width: 18rem;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--card-background-color);
+  color: var(--card-text-color);
+}
+
+.card:hover {
+  background-color: var(--card-hover-background-color);
+}
+
+.card-img {
+  height: 90px;
+  border-radius: 5%;
+}
+
+/* Light mode variables */
+.light-mode {
+  --card-background-color: white;
+  --card-text-color: black;
+  --card-hover-background-color: #e0e1dc;
+  /* Light background color on hover */
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --card-background-color: #2b2b2b;
+  /* Nice dark grey color */
+  --card-text-color: white;
+  --card-hover-background-color: #1f1f1f;
+  /* Darker grey on hover */
+}

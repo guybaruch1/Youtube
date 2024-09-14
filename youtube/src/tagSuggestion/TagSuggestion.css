@@ -1,0 +1,39 @@
+
+.btn-light-mode {
+    background-color: var(--light-button-background-color);
+    color: var(--light-button-text-color);
+  }
+
+.btn-light-mode:hover{
+    background-color: #e0e1dc; /* Light background color */
+}
+
+.btn-dark-mode {
+    background-color: var(--dark-button-background-color);
+    color: var(--dark-button-text-color);
+  }
+
+.btn-dark-mode:hover{
+    background-color: #646363; /* Light background color */
+    color: var(--dark-button-text-color);
+}
+  
+  .btn-all-light-mode {
+    background-color: black;
+    color: white;
+  }
+  
+  .btn-all-light-mode:hover{
+    background-color: black;
+    color: white;
+}
+
+  .btn-all-dark-mode {
+    background-color: white;
+    color: black;
+  }
+
+  .btn-all-dark-mode:hover{
+    background-color: white;
+    color: black;
+}

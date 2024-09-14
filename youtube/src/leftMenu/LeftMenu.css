@@ -1,0 +1,32 @@
+/* LeftMenu.css */
+
+.left-menu {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.left-menu .list-group-item {
+  background-color: var(--list-item-background-color);
+  color: var(--list-item-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.left-menu .list-group-item:hover {
+  background-color: var(--list-item-hover-background-color);
+  color: var(--list-item-hover-text-color);
+}
+
+/* Light mode variables */
+.light-mode {
+  --list-item-background-color: white;
+  --list-item-text-color: black;
+  --list-item-hover-background-color: #e0e1dc; /* Light background color on hover */
+  --list-item-hover-text-color: black; /* Hover text color for light mode */
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --list-item-background-color: #2b2b2b; /* Nice dark grey color */
+  --list-item-text-color: white;
+  --list-item-hover-background-color: #1f1f1f; /* Darker grey on hover */
+  --list-item-hover-text-color: white; /* Hover text color for dark mode */
+}

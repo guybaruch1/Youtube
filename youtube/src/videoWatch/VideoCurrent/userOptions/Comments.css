@@ -1,0 +1,74 @@
+.comments-section {
+  margin-top: 15px;
+}
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+}
+
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.comment-time {
+  margin-left: 10px;
+  color: #777;
+}
+
+.options-container {
+  margin-left: auto;
+  position: relative;
+}
+
+.options-menu {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.options-menu button {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-body {
+  margin-top: 5px;
+}
+
+.edit-comment {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 5px;
+}
+
+.edit-buttons .btn {
+  margin-right: 5px;
+}

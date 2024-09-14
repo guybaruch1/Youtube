@@ -1,0 +1,129 @@
+/* App.css */
+:root {
+  --light-input-background-color: white;
+  --light-input-text-color: black;
+  --light-input-border-color: #474747;
+  --light-input-focus-background-color: white;
+  --light-button-background-color: #EEEEEF;
+  --light-button-text-color: black;
+
+  --dark-input-background-color: #2b2b2b;
+  --dark-input-text-color: white;
+  --dark-input-border-color: #474747;
+  --dark-input-focus-background-color: #474747;
+  --dark-button-background-color: #474747;
+  --dark-button-text-color: white;
+  --dark-button-hover-background-color: #1f1f1f;
+
+  --input-focus-border-color: #474747;
+
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.light-mode {
+  --background-color: white;
+  --text-color: black;
+  --input-background-color: var(--light-input-background-color);
+  --input-text-color: var(--light-input-text-color);
+  --input-border-color: var(--light-input-border-color);
+  --input-focus-background-color: var(--light-input-focus-background-color);
+  --button-background-color: var(--light-button-background-color);
+  --button-text-color: var(--light-button-text-color);
+}
+
+.dark-mode {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --input-background-color: var(--dark-input-background-color);
+  --input-text-color: var(--dark-input-text-color);
+  --input-border-color: var(--dark-input-border-color);
+  --input-focus-background-color: var(--dark-input-focus-background-color);
+  --button-background-color: var(--dark-button-background-color);
+  --button-text-color: var(--dark-button-text-color);
+  --button-hover-background-color: var(--dark-button-hover-background-color);
+}
+
+.main-content {
+  margin-top: 60px;
+}
+
+.no-underline {
+  text-decoration: none;
+  color: inherit;
+}
+
+.form-control {
+  background-color: var(--input-background-color);
+  color: var(--input-text-color);
+  border: 1px solid var(--input-border-color);
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-control:focus {
+  background-color: var(--input-focus-background-color);
+  border-color: var(--input-focus-border-color);
+  color: var(--input-text-color); /* Ensure text color is set on focus */
+}
+
+.form-control-dark-mode {
+  color: var(--dark-input-text-color);
+}
+
+.form-control-dark-mode:focus {
+  color: var(--dark-input-text-color); /* Ensure text color is white on focus */
+}
+
+.form-control-light-mode:focus {
+  color: var(--light-input-text-color); /* Ensure text color is black on focus */
+}
+
+#sign-in-register-card {
+  width: 40rem;
+  border-radius: 15px;
+  background-color: #F3F7EC;
+}
+
+#form-row {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+button {
+  border: 1px solid var(--button-border-color);
+  transition: border-color 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+button i {
+  color: var(--button-text-color);
+}
+
+/* Light mode button styles */
+.btn-light-mode {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+.btn-light-mode:hover {
+  background-color: #f0f0f0;
+}
+
+/* Dark mode button styles */
+.btn-dark-mode {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+}
+
+.btn-dark-mode:hover {
+  background-color: var(--button-hover-background-color);
+}

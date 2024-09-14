@@ -1,0 +1,11 @@
+.main-content {
+  margin-top: 60px;
+}
+
+.success-message {
+  background-color: #F3EEEA; /* background color */
+  color: #521e1e;           /* text color */
+  border-color: #EBE3D5;    /* border color */
+  padding: 20px;
+  border-radius: 5px;
+}

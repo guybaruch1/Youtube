@@ -1,0 +1,37 @@
+/* SignInBox.css */
+
+.main-content-sign-in {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-control {
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+    border: 1px solid var(--input-border-color);
+  }
+  
+  .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-secondary {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  #sign-in-register-card {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    border: none;
+  }
+  

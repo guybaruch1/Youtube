@@ -47,10 +47,14 @@ const incrementViews = async (req, res) => {
     // Create a message to send to the C++ server
     const message = JSON.stringify({ user: userId, video: videoId });
 
-    // Send the message to the C++ server
-    sendToCppServer(message);
-
-    res.sendStatus(200);
+    // Send the message to the C++ server and get recommendations
+    sendToCppServer(message, (recommendations) => {
+      // Send the recommendations back to the frontend
+      res.status(200).json({
+        message: "Views incremented and recommendations received",
+        recommendations: recommendations.split(" ") // Assuming recommendations are space-separated video IDs
+      });
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

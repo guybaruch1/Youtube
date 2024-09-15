@@ -1,7 +1,7 @@
 const net = require('net');
 
-// Function to send a message to the C++ server
-function sendToCppServer(message) {
+// Function to send a message to the C++ server and return recommendations
+function sendToCppServer(message, callback) {
   const client = new net.Socket();
   
   // Connect to the C++ server (assuming it's running on localhost and port 5555)
@@ -13,6 +13,9 @@ function sendToCppServer(message) {
   // Handle data received from the C++ server (response, e.g., recommendations)
   client.on('data', (data) => {
     console.log('Received from C++ server:', data.toString());
+
+    // Call the callback with the recommendations data
+    callback(data.toString());
     client.destroy();  // Close connection after receiving data
   });
 

@@ -39,10 +39,14 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
         }
         const data = await response.json();
 
-        // Increment the view count in the database
-        await fetch(`http://localhost:8080/api/videos/increment-views/${videoId}`, {
-          method: 'PATCH',
-        });
+        // Increment the view count in the database and send userId to the server
+      await fetch(`http://localhost:8080/api/videos/increment-views/${videoId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: currentUser._id }),  // Include userId in the request body
+      });
 
         // Update the local state with the incremented view count
         setSelectedVideo({ ...data, viewsCount: (parseInt(data.viewsCount) + 1).toString() });

@@ -1,4 +1,6 @@
 const videoService = require('../services/videoService.js');
+const { sendToCppServer } = require('../services/tcpClient.js');  // Import the TCP client function
+
 
 const getAllVideos = async (_, res) => {
   try {
@@ -36,7 +38,18 @@ const getVideoById = async (req, res) => {
 
 const incrementViews = async (req, res) => {
   try {
-    await videoService.incrementViews(req.params.id);
+    const videoId = req.params.id;
+    const userId = req.body.userId;  // Assuming userId is sent in the request body
+
+    // Increment the video views (existing logic)
+    await videoService.incrementViews(videoId);
+
+    // Create a message to send to the C++ server
+    const message = JSON.stringify({ user: userId, video: videoId });
+
+    // Send the message to the C++ server
+    sendToCppServer(message);
+
     res.sendStatus(200);
   } catch (err) {
     res.status(500).json({ error: err.message });

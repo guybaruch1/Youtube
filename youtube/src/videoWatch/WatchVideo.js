@@ -69,9 +69,29 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
         }
 
         const data = await response.json();
+        let recommendedVideos = data.recommendedVideos;
 
-        // Update the state with the recommended videos
-        setRecommendedVideoList(data.recommendedVideos);  // Set the recommended videos list into the state
+        // If the list has fewer than 7 videos, supplement with videos from videoList
+        if (recommendedVideos.length < 7) {
+          // Create a Set of video IDs from the recommended videos to avoid duplicates
+          const recommendedVideoIds = new Set(recommendedVideos.map(video => video._id));
+
+          // Add videos from videoList, ensuring there are no duplicates
+          for (let video of videoList) {
+            if (!recommendedVideoIds.has(video._id)) {
+              recommendedVideos.push(video);
+              recommendedVideoIds.add(video._id);
+            }
+
+            // Stop once we have 7 videos
+            if (recommendedVideos.length === 7) {
+              break;
+            }
+          }
+        }
+
+        // Update the state with the final list of recommended videos
+        setRecommendedVideoList(recommendedVideos);  // Set the recommended videos list into the state
       } catch (error) {
         console.error('Error fetching recommended videos:', error);
       }
@@ -83,6 +103,8 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
 
     if (currentUser){
       fetchRecommendations(videoId)
+    } else{
+      setRecommendedVideoList(videoList)
     }
 
   }, [uploaderId, videoId]);

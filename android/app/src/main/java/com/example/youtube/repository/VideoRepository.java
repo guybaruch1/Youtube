@@ -62,8 +62,8 @@ public class VideoRepository {
         videoAPI.getMostViewedAndRandomVideos(callback);
     }
 
-    public void incrementViews(String id, Callback<VideoSession> callback) {
-        videoAPI.incrementViews(id, callback);
+    public void incrementViews(String id, String userId, Callback<VideoSession> callback) {
+        videoAPI.incrementViews(id, userId, callback);
     }
 
     public void updateVideoDetails(VideoSession video) {

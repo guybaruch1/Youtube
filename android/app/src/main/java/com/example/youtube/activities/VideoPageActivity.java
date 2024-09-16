@@ -456,20 +456,22 @@ public class VideoPageActivity extends AppCompatActivity {
         });
     }
 //
-    private void incrementViewsOnServer(String videoId) {
-        videoViewModel.incrementViews(videoId).observe(this, new Observer<VideoSession>() {
-            @SuppressLint("SetTextI18n")
-            @Override
-            public void onChanged(VideoSession videoSession) {
-                if (videoSession != null) {
-                    viewsTextView.setText("Views: " + videoSession.getViewsCount());
-                } else {
-                    Log.e("VideoPageActivity", "Failed to fetch updated video details");
-                }
+private void incrementViewsOnServer(String videoId) {
+    String currentUserId = UserSession.getInstance().getUserId();
+    videoViewModel.incrementViews(videoId, currentUserId).observe(this, new Observer<VideoSession>() {
+        @SuppressLint("SetTextI18n")
+        @Override
+        public void onChanged(VideoSession videoSession) {
+            if (videoSession != null) {
+                viewsTextView.setText("Views: " + videoSession.getViewsCount());
+            } else {
+                Log.e("VideoPageActivity", "Failed to fetch updated video details");
             }
-        });
-    }
-  
+        }
+    });
+}
+
+
     private void updateButtonColors() {
         if (isLiked) {
             likeButton.setBackgroundColor(getResources().getColor(R.color.button_darker_color));

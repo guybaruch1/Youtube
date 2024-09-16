@@ -4,6 +4,7 @@ import com.example.youtube.entities.Comment;
 import com.example.youtube.model.VideoSession;
 
 import java.util.List;
+import java.util.Map;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -28,7 +29,7 @@ public interface VideoApiService {
     Call<String> getUploaderId(@Path("id") String id);
 
     @PATCH("api/videos/increment-views/{id}")
-    Call<VideoSession> incrementViews(@Path("id") String id);
+    Call<VideoSession> incrementViews(@Path("id") String id, @Body Map<String, String> body);
 
     @POST("api/videos/{id}/comments")
     Call<VideoSession> addCommentToVideo(@Header("Authorization") String token, @Path("id") String id, @Body RequestBody commentJson);

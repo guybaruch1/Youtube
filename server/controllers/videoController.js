@@ -48,17 +48,35 @@ const incrementViews = async (req, res) => {
     const message = JSON.stringify({ user: userId, video: videoId });
 
     // Send the message to the C++ server and get recommendations
-    sendToCppServer(message, (recommendations) => {
-      // Send the recommendations back to the frontend
-      res.status(200).json({
-        message: "Views incremented and recommendations received",
-        recommendations: recommendations.split(" ") // Assuming recommendations are space-separated video IDs
-      });
+    sendToCppServer(message, async (recommendations) => {
+      // Clean the recommendation response to extract only the video IDs
+      const recommendedVideoIds = recommendations
+          .replace('Recommended videos:', '') // Remove the "Recommended videos:" part
+          .trim() // Remove leading/trailing spaces
+          .split(' ') // Split into an array of video IDs
+          .filter(id => id.match(/^[0-9a-fA-F]{24}$/)); // Only keep valid 24-character hex strings (valid ObjectIds)
+
+      // Fetch the recommended videos from MongoDB
+      if (recommendedVideoIds.length > 0) {
+        const recommendedVideos = await videoService.getVideosByIds(recommendedVideoIds);
+
+        // Send the videos as JSON response
+        res.status(200).json({
+          message: "Views incremented and recommendations received",
+          recommendedVideos
+        });
+      } else {
+        res.status(200).json({
+          message: "Views incremented but no valid recommendations received",
+          recommendedVideos: []
+        });
+      }
     });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: err.message});
   }
 };
+
 
 const deleteVideoById = async (req, res) => {
   try {

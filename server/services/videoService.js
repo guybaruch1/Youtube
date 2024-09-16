@@ -93,10 +93,14 @@ const getUploaderId = async (videoId) => {
   }
 };
 
+const getVideosByIds = async (videoIds) => {
+  return await VideoModel.find({ _id: { $in: videoIds } });
+};
+
 module.exports = {
   getAllVideos, getVideosByUploaderId,
   getVideoById, incrementViews,
   deleteVideoById, updateVideoById, createVideo,
   getMostViewedVideos, getRandomVideos, addCommentToVideo, deleteCommentFromVideo, editCommentInVideo,
-  getVideoWithUploaderNameById, getUploaderId
+  getVideoWithUploaderNameById, getUploaderId, getVideosByIds
 };

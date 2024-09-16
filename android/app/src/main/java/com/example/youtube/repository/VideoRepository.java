@@ -10,6 +10,7 @@ import androidx.room.Room;
 import com.example.youtube.activities.BaseActivity;
 import com.example.youtube.activities.MainPageActivity;
 import com.example.youtube.api.VideoAPI;
+import com.example.youtube.model.RecommendationsResponse;
 import com.example.youtube.model.VideoSession;
 import com.example.youtube.room.AppDB;
 import com.example.youtube.room.VideoDao;
@@ -20,7 +21,7 @@ import java.util.List;
 import retrofit2.Callback;
 
 public class VideoRepository {
-   private VideoDao videoDao;
+    private VideoDao videoDao;
     private VideoAPI videoAPI;
     private VideoListData videoListData;
 
@@ -62,8 +63,8 @@ public class VideoRepository {
         videoAPI.getMostViewedAndRandomVideos(callback);
     }
 
-    public void incrementViews(String id, Callback<VideoSession> callback) {
-        videoAPI.incrementViews(id, callback);
+    public void incrementViews(String id, String userId, Callback<VideoSession> callback) {
+        videoAPI.incrementViews(id, userId, callback);
     }
 
     public void updateVideoDetails(VideoSession video) {
@@ -77,5 +78,10 @@ public class VideoRepository {
     public void getUserVideos(String userId, Callback<List<VideoSession>> callback) {
         videoAPI.getUserVideos(userId, callback);
     }
+
+    public void getRecommendations(String videoId, String userId, Callback<RecommendationsResponse> callback) {
+        videoAPI.getRecommendations(videoId, userId, callback);
+    }
+
 
 }

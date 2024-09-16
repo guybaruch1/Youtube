@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.youtube.entities.Video;
+import com.example.youtube.model.RecommendationsResponse;
 import com.example.youtube.model.VideoSession;
 import com.example.youtube.repository.VideoRepository;
 
@@ -59,9 +60,9 @@ public class VideoViewModel extends AndroidViewModel {
         return liveData;
     }
 
-    public LiveData<VideoSession> incrementViews(String id) {
+    public LiveData<VideoSession> incrementViews(String id, String userId) {
         MutableLiveData<VideoSession> liveData = new MutableLiveData<>();
-        videoRepository.incrementViews(id, new Callback<VideoSession>() {
+        videoRepository.incrementViews(id, userId, new Callback<VideoSession>() {
             @Override
             public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
                 if (response.isSuccessful()) {
@@ -78,6 +79,7 @@ public class VideoViewModel extends AndroidViewModel {
         });
         return liveData;
     }
+
 
     public void updateVideoDetails(VideoSession video) {
         videoRepository.updateVideoDetails(video);
@@ -106,6 +108,27 @@ public class VideoViewModel extends AndroidViewModel {
         });
         return liveData;
     }
-}
 
+    public LiveData<RecommendationsResponse> getRecommendations(String videoId, String userId) {
+        MutableLiveData<RecommendationsResponse> liveData = new MutableLiveData<>();
+        videoRepository.getRecommendations(videoId, userId, new Callback<RecommendationsResponse>() {
+            @Override
+            public void onResponse(Call<RecommendationsResponse> call, Response<RecommendationsResponse> response) {
+                if (response.isSuccessful()) {
+                    liveData.setValue(response.body());
+                } else {
+                    liveData.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecommendationsResponse> call, Throwable t) {
+                liveData.setValue(null);
+            }
+        });
+        return liveData;
+    }
+
+
+}
 

@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++17 -Wall
 
 # Output executable
-TARGET = server
+TARGET = cpp_server
 
 # Source files
 SRCS = main.cpp recommendations.cpp utilities.cpp

@@ -59,9 +59,9 @@ public class VideoViewModel extends AndroidViewModel {
         return liveData;
     }
 
-    public LiveData<VideoSession> incrementViews(String id) {
+    public LiveData<VideoSession> incrementViews(String id, String userId) {
         MutableLiveData<VideoSession> liveData = new MutableLiveData<>();
-        videoRepository.incrementViews(id, new Callback<VideoSession>() {
+        videoRepository.incrementViews(id, userId, new Callback<VideoSession>() {
             @Override
             public void onResponse(Call<VideoSession> call, Response<VideoSession> response) {
                 if (response.isSuccessful()) {
@@ -78,6 +78,7 @@ public class VideoViewModel extends AndroidViewModel {
         });
         return liveData;
     }
+
 
     public void updateVideoDetails(VideoSession video) {
         videoRepository.updateVideoDetails(video);

@@ -48,17 +48,27 @@ const incrementViews = async (req, res) => {
     const message = JSON.stringify({ user: userId, video: videoId });
 
     // Send the message to the C++ server and get recommendations
-    sendToCppServer(message, (recommendations) => {
-      // Send the recommendations back to the frontend
+    sendToCppServer(message, async (recommendations) => {
+      // Clean the recommendation response to extract only the video IDs
+      const recommendedVideoIds = recommendations
+          .replace('Recommended videos:', '') // Remove the "Recommended videos:" part
+          .trim() // Remove leading/trailing spaces
+          .split(' '); // Split into an array of video IDs
+
+      // Fetch the recommended videos from MongoDB
+      const recommendedVideos = await videoService.getVideosByIds(recommendedVideoIds);
+
+      // Send the videos as JSON response
       res.status(200).json({
         message: "Views incremented and recommendations received",
-        recommendations: recommendations.split(" ") // Assuming recommendations are space-separated video IDs
+        recommendedVideos
       });
     });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
 
 const deleteVideoById = async (req, res) => {
   try {

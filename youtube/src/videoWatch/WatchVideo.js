@@ -9,6 +9,7 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
   const [resetComments, setResetComments] = useState(false);
   const [comments, setComments] = useState([]); // Local state for comments
   const [uploaderId, setUploaderId] = useState(null); // State for uploaderId
+  const [recommendedVideoList, setRecommendedVideoList] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -39,14 +40,10 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
         }
         const data = await response.json();
 
-        // Increment the view count in the database and send userId to the server
-      await fetch(`http://localhost:8080/api/videos/increment-views/${videoId}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ userId: currentUser._id }),  // Include userId in the request body
-      });
+        // Increment the view count in the database
+        await fetch(`http://localhost:8080/api/videos/increment-views/${videoId}`, {
+          method: 'PATCH',
+        });
 
         // Update the local state with the incremented view count
         setSelectedVideo({ ...data, viewsCount: (parseInt(data.viewsCount) + 1).toString() });
@@ -56,9 +53,38 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
       }
     };
 
+    const fetchRecommendations = async (videoId) => {
+      try {
+        // Fetch the recommended videos from the server
+        const response = await fetch(`http://localhost:8080/api/videos/recommendations/${videoId}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ userId: currentUser?._id || null }),  // Handle case where user is not logged in
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch recommended videos');
+        }
+
+        const data = await response.json();
+
+        // Update the state with the recommended videos
+        setRecommendedVideoList(data.recommendedVideos);  // Set the recommended videos list into the state
+      } catch (error) {
+        console.error('Error fetching recommended videos:', error);
+      }
+    };
+
     if (uploaderId) {
       fetchAndIncrementVideoById(uploaderId, videoId);
     }
+
+    if (currentUser){
+      fetchRecommendations(videoId)
+    }
+
   }, [uploaderId, videoId]);
 
   useEffect(() => {
@@ -250,7 +276,7 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
             </div>
           </div>
           <div className="col-4">
-            <SuggestedVideos onVideoSelect={handleVideoSelect} videoData={videoList} />
+            <SuggestedVideos onVideoSelect={handleVideoSelect} videoData={recommendedVideoList} />
           </div>
         </div>
       </div>

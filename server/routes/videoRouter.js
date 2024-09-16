@@ -13,6 +13,8 @@ videoRouter.get('/:id/getUploaderId', videoController.getUploaderId);
 // Video information
 videoRouter.get('/:id/uploader', videoController.getVideoWithUploaderNameById);
 videoRouter.patch('/increment-views/:id', videoController.incrementViews);
+videoRouter.patch('/recommendations/:id', videoController.recommendations);
+
 
 // Handle comments
 videoRouter.post('/:id/comments', authenticateToken, videoController.addCommentToVideo);

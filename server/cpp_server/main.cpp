@@ -52,7 +52,7 @@ int main() {
     sockaddr_in server_address;
     server_address.sin_family = AF_INET;
     server_address.sin_addr.s_addr = INADDR_ANY;
-    server_address.sin_port = htons(5555);
+    server_address.sin_port = htons(55555);
 
     if (bind(server_sock, (struct sockaddr *)&server_address, sizeof(server_address)) < 0) {
         perror("Binding failed");
@@ -66,7 +66,7 @@ int main() {
         return -1;
     }
 
-    std::cout << "Server is running and listening on port 5555..." << std::endl;
+    std::cout << "Server is running and listening on port 55555..." << std::endl;
 
     while (true) {
         sockaddr_in client_address;

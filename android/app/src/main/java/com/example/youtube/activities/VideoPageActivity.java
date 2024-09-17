@@ -25,6 +25,8 @@ import com.example.youtube.adapters.CommentAdapter;
 import com.example.youtube.adapters.VideoSessionAdapter;
 import com.example.youtube.entities.Comment;
 import com.example.youtube.entities.UserSession;
+import com.example.youtube.entities.Video;
+import com.example.youtube.model.RecommendationsResponse;
 import com.example.youtube.model.VideoSession;
 import com.example.youtube.view_model.CommentViewModel;
 import com.example.youtube.view_model.UserViewModel;
@@ -81,7 +83,7 @@ public class VideoPageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_page);
-      
+
         videoViewModel = new ViewModelProvider(this).get(VideoViewModel.class);
         commentviewModel = new ViewModelProvider(this).get(CommentViewModel.class);
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
@@ -429,9 +431,13 @@ public class VideoPageActivity extends AppCompatActivity {
         }
 
         // Initial fetch of video details
-    //    fetchVideoDetails();
+        //    fetchVideoDetails();
         // Fetch related videos
-        fetchRelatedVideos();
+
+        if (currentUserId != null) {
+            fetchRecommendedVideos();
+        }
+        else {fetchRelatedVideos();}
     }
 
     private void fetchVideoDetails() {
@@ -455,21 +461,21 @@ public class VideoPageActivity extends AppCompatActivity {
             }
         });
     }
-//
-private void incrementViewsOnServer(String videoId) {
-    String currentUserId = UserSession.getInstance().getUserId();
-    videoViewModel.incrementViews(videoId, currentUserId).observe(this, new Observer<VideoSession>() {
-        @SuppressLint("SetTextI18n")
-        @Override
-        public void onChanged(VideoSession videoSession) {
-            if (videoSession != null) {
-                viewsTextView.setText("Views: " + videoSession.getViewsCount());
-            } else {
-                Log.e("VideoPageActivity", "Failed to fetch updated video details");
+    //
+    private void incrementViewsOnServer(String videoId) {
+        String currentUserId = UserSession.getInstance().getUserId();
+        videoViewModel.incrementViews(videoId, currentUserId).observe(this, new Observer<VideoSession>() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onChanged(VideoSession videoSession) {
+                if (videoSession != null) {
+                    viewsTextView.setText("Views: " + videoSession.getViewsCount());
+                } else {
+                    Log.e("VideoPageActivity", "Failed to fetch updated video details");
+                }
             }
-        }
-    });
-}
+        });
+    }
 
 
     private void updateButtonColors() {
@@ -701,5 +707,97 @@ private void incrementViewsOnServer(String videoId) {
             }
         });
     }
+
+    private void fetchRecommendedVideos() {
+        String currentUserId = UserSession.getInstance().getUserId();  // Get current user ID
+
+        // Call ViewModel method to fetch recommended videos
+        videoViewModel.getRecommendations(videoId, currentUserId).observe(this, new Observer<RecommendationsResponse>() {
+            @Override
+            public void onChanged(RecommendationsResponse response) {
+                if (response != null && response.getRecommendedVideos() != null) {
+                    // Update the adapter with the recommended videos list
+                    relatedVideoList.clear();
+                    List<VideoSession> recommendedVideos = response.getRecommendedVideos();
+
+                    if (recommendedVideos.size() < 7) {
+                        // Fetch random videos to complete the list to size 7
+                        fetchRandomVideosToFill(recommendedVideos, 7 - recommendedVideos.size());
+                    } else {
+                        // Directly add the 7 recommended videos to the list
+                        for (VideoSession videoSession : recommendedVideos) {
+                            if (!videoSession.getId().equals(videoId)) {
+                                relatedVideoList.add(videoSession);
+                            }
+
+                            // Fetch uploader's display name for each recommended video
+                            userViewModel.getUserDisplayName(videoSession.getUploaderId()).observe(VideoPageActivity.this, displayName -> {
+                                if (displayName != null) {
+                                    videoSession.setUploaderDisplayName(displayName);  // Update uploader display name
+                                }
+                            });
+                        }
+
+                        // Notify the adapter that the dataset has changed
+                        relatedVideosAdapter.notifyDataSetChanged();
+                    }
+                } else {
+                    Log.e("VideoPageActivity", "No recommendations received");
+                }
+            }
+        });
+    }
+
+    private void fetchRandomVideosToFill(List<VideoSession> recommendedVideos, int videosToAdd) {
+        videoViewModel.getMostViewedAndRandomVideos().observe(this, new Observer<List<VideoSession>>() {
+            @Override
+            public void onChanged(List<VideoSession> randomVideos) {
+                if (randomVideos != null) {
+                    // Add random videos to the recommended videos list until size is 7
+                    int count = 0;
+                    for (VideoSession randomVideo : randomVideos) {
+                        if (count >= videosToAdd) break;  // Stop once we have added enough random videos
+
+                        // Ensure the random video is not already in the recommended list
+                        boolean isAlreadyInList = false;
+                        for (VideoSession recommendedVideo : recommendedVideos) {
+                            if (recommendedVideo.getId().equals(randomVideo.getId())) {
+                                isAlreadyInList = true;
+                                break;
+                            }
+                        }
+
+                        if (!isAlreadyInList && !randomVideo.getId().equals(videoId)) {
+                            recommendedVideos.add(randomVideo);
+                            count++;
+                        }
+                    }
+
+                    // After adding random videos, update the adapter
+                    updateRelatedVideosAdapter(recommendedVideos);
+                }
+            }
+        });
+    }
+
+    private void updateRelatedVideosAdapter(List<VideoSession> recommendedVideos) {
+        relatedVideoList.clear();
+
+        // Add all recommended videos to the related video list
+        for (VideoSession videoSession : recommendedVideos) {
+            relatedVideoList.add(videoSession);
+
+            // Fetch uploader's display name for each recommended video
+            userViewModel.getUserDisplayName(videoSession.getUploaderId()).observe(VideoPageActivity.this, displayName -> {
+                if (displayName != null) {
+                    videoSession.setUploaderDisplayName(displayName);  // Update uploader display name
+                }
+            });
+        }
+
+        // Notify the adapter that the dataset has changed
+        relatedVideosAdapter.notifyDataSetChanged();
+    }
+
 
 }

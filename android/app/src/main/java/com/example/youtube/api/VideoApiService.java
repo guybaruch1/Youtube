@@ -1,6 +1,7 @@
 package com.example.youtube.api;
 
 import com.example.youtube.entities.Comment;
+import com.example.youtube.model.RecommendationsResponse;
 import com.example.youtube.model.VideoSession;
 
 import java.util.List;
@@ -49,5 +50,8 @@ public interface VideoApiService {
 
     @GET("api/users/{userId}/videos")
     Call<List<VideoSession>> getUserVideos(@Path("userId") String userId);
+
+    @PATCH("api/videos/recommendations/{id}")
+    Call<RecommendationsResponse> getRecommendations(@Path("id") String videoId, @Body Map<String, String> body);
 
 }

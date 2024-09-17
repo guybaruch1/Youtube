@@ -5,6 +5,7 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.youtube.model.RecommendationsResponse;
 import com.example.youtube.model.VideoSession;
 import com.example.youtube.room.VideoDao;
 import com.example.youtube.utils.RetrofitInstance;
@@ -187,5 +188,32 @@ public class VideoAPI {
             }
         });
     }
+
+    public void getRecommendations(String videoId, String userId, Callback<RecommendationsResponse> callback) {
+        // Create a map for the request body
+        Map<String, String> body = new HashMap<>();
+        body.put("userId", userId);
+
+        // Make the API call and pass the callback to handle the response
+        Call<RecommendationsResponse> call = apiService.getRecommendations(videoId, body);
+        call.enqueue(new Callback<RecommendationsResponse>() {
+            @Override
+            public void onResponse(Call<RecommendationsResponse> call, Response<RecommendationsResponse> response) {
+                if (response.isSuccessful()) {
+                    callback.onResponse(call, response);
+                } else {
+                    Log.e(TAG, "Fetching recommendations failed with response code: " + response.code());
+                    callback.onFailure(call, new Throwable("Fetching recommendations failed with response code: " + response.code()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RecommendationsResponse> call, Throwable t) {
+                Log.e(TAG, "Fetching recommendations failed: " + t.getMessage());
+                callback.onFailure(call, t);
+            }
+        });
+    }
+
 
 }

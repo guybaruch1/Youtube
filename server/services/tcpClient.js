@@ -5,7 +5,7 @@ function sendToCppServer(message, callback) {
   const client = new net.Socket();
   
   // Connect to the C++ server (assuming it's running on localhost and port 5555)
-  client.connect(5555, '127.0.0.1', () => {
+  client.connect(55555, '127.0.0.1', () => {
     console.log('Connected to C++ server');
     client.write(message);  // Send the message
   });

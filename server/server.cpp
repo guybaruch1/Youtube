@@ -12,7 +12,7 @@ void handle_client(int client_sock);
 
 int main()
 {
-    const int server_port = 5555;
+    const int server_port = 55555;
     int sock = socket(AF_INET, SOCK_STREAM, 0);
     if (sock < 0)
     {

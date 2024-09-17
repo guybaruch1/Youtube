@@ -1,5 +1,6 @@
 /server/node_modules
 /server/config/.env.local
+/youtube/node_modules
 /.idea/
 
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.

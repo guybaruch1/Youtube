@@ -1,4 +1,4 @@
-# 89-3210 Course - Exercise 3 - Youtube Project with Server Side - Android 
+# 89-3210 Course - Exercise 4 - Youtube Project with Server Side - Android, React, and C++
 
 This project is a simplified version of YouTube, allowing users to watch videos as a guest or a registered user, so you can upload videos, write comments and see other user's profiles and their videos.
 

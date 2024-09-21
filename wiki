@@ -10,6 +10,7 @@ Please note:
 1. **main** branch is the branch for exercise 1
 2. **part_2_main** is the branch for exercise 2
 3. **main_part_3** is the branch for exercise 3
+4. **main_part_4** is the branch for exercise 4
    
 ## A brief explanation about the workflow:
 
@@ -30,7 +31,8 @@ Link to Jira: https://tomerbarak2.atlassian.net/jira/software/projects/YOUT/boar
 - Logged-in users can edit/delete their videos
 - Logged-in users can edit/delete its account
 - Dark mode and light mode
-
+- Related Video Recommendations: Dynamic display of related videos sorted from highest to lowest by views, providing personalized recommendations based on user preferences.
+- Multithreading: Utilizes multithreading in the backend server to enhance performance and responsiveness, particularly during video processing and recommendation algorithms.
 ## Installation
 
 To get started with the project, follow these steps:
@@ -40,8 +42,8 @@ To get started with the project, follow these steps:
 ```bash
 git clone https://github.com/guybaruch1/Youtube
 cd Youtube
-git checkout main_part_3
-git pull origin main_part_3
+git checkout main_part_4
+git pull origin main_part_4
 ```
 
 ### Set up MongoDB to work with our app
@@ -86,6 +88,9 @@ SECRET_KEY=your_secret_key
 ```
 
 Make sure port is "8080" and SECRET_KEY is "your_secret_key" as defined above. However, you can choose your own MongoDB port.
+
+**Run the cpp server**
+..... need to fill it
 
 **Run the server:**
  start the development server using

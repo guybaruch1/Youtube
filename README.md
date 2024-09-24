@@ -126,4 +126,3 @@ Please note that the JWT you get when log-in to your account expires within 1 ho
 Enjoy the watch!
 
 
-![Screenshot 2024-09-24 163405](https://github.com/user-attachments/assets/789b5f1f-878a-4d57-977b-21c162112894)

@@ -52,6 +52,6 @@ and also walk-through screenshots for using the Web and Android client
 
 In the Wiki folder you can find installation and instruction for running the project as web and android clients:
 
-[Server]()  
-[Web client]()  
-[Android Client]()
+- [Initialization and Server Set Up](wiki/02---Initialization-and-Server-Set-Up.md)
+- [Web Client Set Up and Use](wiki/03---Web-Client-Set-Up-and-Use.md)
+- [Android Client Set Up and Use](wiki/04---Android-Client-Set-Up-and-Use.md)

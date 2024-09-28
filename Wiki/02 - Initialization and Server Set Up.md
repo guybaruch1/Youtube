@@ -86,7 +86,7 @@ Please note that in order to support the Android client, the CPP server runs on 
 At this point, when both the Node.js and CPP server are running, 
 you will be able to run the web and android clients.
 
-[Web client]()  
-[Android Client]()
+- [Web Client Set Up and Use](wiki/03---Web-Client-Set-Up-and-Use.md)
+- [Android Client Set Up and Use](wiki/04---Android-Client-Set-Up-and-Use.md)
 
 

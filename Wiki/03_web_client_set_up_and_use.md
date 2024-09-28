@@ -49,10 +49,10 @@ After that time, the user will not be able to upload, edit or delete anything. T
 
 ### Upload videos, edit and delete them
 
-Upload video screen:  
+- Upload video screen:  
 <img src="https://github.com/user-attachments/assets/1b9aaf20-af5d-4914-83ea-348f790354fb" alt="image" width="500">  
 
-When logged-in as the video's uploader, you can edit the video details or delete your video:  
+- When logged-in as the video's uploader, you can edit the video details or delete your video:  
 <img src="https://github.com/user-attachments/assets/1b0a8225-b36f-4465-9c9e-313e9a151869" alt="image" width="500">  
 <img src="https://github.com/user-attachments/assets/5373570f-0312-4c01-8694-0578668d04dd" alt="image" width="500">  
 <img src="https://github.com/user-attachments/assets/aa21a76f-fd3c-401e-b3e1-6bf48a2c9c59" alt="image" width="500">  
@@ -65,11 +65,11 @@ When logged-in as the video's uploader, you can edit the video details or delete
 
 ### User profile
 
-When you are logged in, you can click on your profile picture on the right top corner,
+- When you are logged in, you can click on your profile picture on the right top corner,
 see your profile with your videos and change your profile picture and display name:  
 <img src="https://github.com/user-attachments/assets/c7ee6fb0-82ad-4845-8d76-f124f415308e" alt="image" width="500">  
 
-Clicking on some user's username you can visit their profile:  
+- Clicking on some user's username you can visit their profile:  
 <img src="https://github.com/user-attachments/assets/d07a2b57-3217-4e73-9811-3f065862223f" alt="image" width="500">  
 
 ### Dark Mode

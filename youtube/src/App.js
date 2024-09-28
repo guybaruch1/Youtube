@@ -127,7 +127,7 @@ function App() {
     setComments(prevComments => ({
       ...prevComments,
       [videoId]: prevComments[videoId].map((comment, index) =>
-        index === commentIndex ? newComment : comment
+          index === commentIndex ? newComment : comment
       )
     }));
   };
@@ -145,41 +145,41 @@ function App() {
 
   const editVideo = (videoId, newTitle, newDescription) => {
     setVideoList(prevVideoList =>
-      prevVideoList.map(video => {
-        if (video._id === videoId) {
-          return {
-            ...video,
-            title: newTitle,
-            description: newDescription
-          };
-        } else {
-          return video;
-        }
-      })
+        prevVideoList.map(video => {
+          if (video._id === videoId) {
+            return {
+              ...video,
+              title: newTitle,
+              description: newDescription
+            };
+          } else {
+            return video;
+          }
+        })
     );
   };
   console.log('Current user changed:', currentUser); // Log user changes
 
   return (
-    <div className="App">
-      <UpperBar
-        setSearchQuery={setSearchQuery}
-        setTagFilter={setTagFilter}
-        currentUser={currentUser}
-        logoutUser={logoutUser}
-      />
-      <Routes>
-        <Route path='/' element={<MainScreen videos={filteredVideos} setTagFilter={setTagFilter} currentUser={currentUser} />} />
-        <Route path="/register" element={<RegisterBox registerUser={registerUser} users={users} />} />
-        <Route path="/signIn" element={<SignInBox loginUser={loginUser} />} />
-        <Route path='/uploadVideo' element={<UploadVideo addVideo={addVideo} user={currentUser} />} />
-        <Route path="/WatchVideo/:videoId" element={<WatchVideo
-            comments={comments} addComment={addComment} editComment={editComment}
-            deleteComment={deleteComment} currentUser={currentUser} videoList={videoList}
-            deleteVideo={deleteVideo} editVideo={editVideo} setVideoList={setVideoList} />} />
-        <Route path='/user/:userId' element={<UserProfile currentUser={currentUser} logout={logoutUser}/>} />
-      </Routes>
-    </div>
+      <div className="App">
+        <UpperBar
+            setSearchQuery={setSearchQuery}
+            setTagFilter={setTagFilter}
+            currentUser={currentUser}
+            logoutUser={logoutUser}
+        />
+        <Routes>
+          <Route path='/' element={<MainScreen videos={filteredVideos} setTagFilter={setTagFilter} currentUser={currentUser} />} />
+          <Route path="/register" element={<RegisterBox registerUser={registerUser} users={users} />} />
+          <Route path="/signIn" element={<SignInBox loginUser={loginUser} />} />
+          <Route path='/uploadVideo' element={<UploadVideo addVideo={addVideo} user={currentUser} />} />
+          <Route path="/WatchVideo/:videoId" element={<WatchVideo
+              comments={comments} addComment={addComment} editComment={editComment}
+              deleteComment={deleteComment} currentUser={currentUser} videoList={videoList}
+              deleteVideo={deleteVideo} editVideo={editVideo} setVideoList={setVideoList} />} />
+          <Route path='/user/:userId' element={<UserProfile currentUser={currentUser} logout={logoutUser}/>} />
+        </Routes>
+      </div>
   );
 }
 

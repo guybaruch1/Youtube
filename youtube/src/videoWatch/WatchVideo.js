@@ -71,6 +71,12 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
         const data = await response.json();
         let recommendedVideos = data.recommendedVideos;
 
+        // Sort the videos in decreasing order by view count
+        recommendedVideos.sort((a, b) => parseInt(b.viewsCount) - parseInt(a.viewsCount));
+
+        // Filter out the current video from recommendations
+        recommendedVideos = recommendedVideos.filter(video => video._id !== videoId);
+
         // If the list has fewer than 7 videos, supplement with videos from videoList
         if (recommendedVideos.length < 7) {
           // Create a Set of video IDs from the recommended videos to avoid duplicates
@@ -104,7 +110,8 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
     if (currentUser){
       fetchRecommendations(videoId)
     } else{
-      setRecommendedVideoList(videoList)
+      const filteredVideoList = videoList.filter(video => video._id !== videoId);
+      setRecommendedVideoList(filteredVideoList);
     }
 
   }, [uploaderId, videoId]);

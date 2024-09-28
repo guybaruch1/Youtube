@@ -16,12 +16,12 @@ const server = express();
 console.log('Connection String:', process.env.CONNECTION_STRING);
 
 mongoose.connect(process.env.CONNECTION_STRING, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 }).then(() => {
-  console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB');
 }).catch((err) => {
-  console.error('Error connecting to MongoDB:', err);
+    console.error('Error connecting to MongoDB:', err);
 });
 
 server.use(express.json());
@@ -43,9 +43,9 @@ server.use(express.static('public'));
 
 // Catch-all handler to serve the React app for any route not handled by API routes
 server.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../youtube/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../youtube/build', 'index.html'));
 });
 
 server.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+    console.log(`Server running on port ${process.env.PORT}`);
 });

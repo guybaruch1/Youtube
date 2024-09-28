@@ -1,4 +1,4 @@
-# Android Client - Set Up
+# Android Client Set Up and Use
 
 ## Installation
 
@@ -6,7 +6,7 @@ To get started with the Android client, follow these steps:
 
 **Open your code editor/IDE**
 
-### Set up the android application
+### Set up the Android Application
 
 1. Open the project in Android Studio
 2. Build the application
@@ -14,7 +14,7 @@ To get started with the Android client, follow these steps:
 
 Please note that the JWT you get when log-in to your account expires within 1 hour. After that time, you will not be able to upload, edit or delete anything. You can sign-out and then sign-in again and you will be able to perform these actions.
 
-## Some screenshots and videos from the application
+## Walk-Through - Use the Application
 
 **Homescreen:** you should see in your homescreen 20 videos (10 of them are the most viewed videos and 10 of them are random) in random order:
 

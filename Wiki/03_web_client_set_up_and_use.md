@@ -29,16 +29,16 @@ Consists of top 10 most viewed videos and 10 more random videos:
 
 
 Search for videos using the search bar or the tag buttons:  
-<img src="https://github.com/user-attachments/assets/8eb3b398-df6e-4602-bf73-7fb7e7421a87" alt="image" width="500">
+<img src="https://github.com/user-attachments/assets/8eb3b398-df6e-4602-bf73-7fb7e7421a87" alt="image" width="500">  
 
 ### Register and log-in 
 
 Registration:  
-<img src="https://github.com/user-attachments/assets/a5e84f78-e536-4de8-95f4-7326b7b78f3f" alt="image" width="500">  
-<img src="https://github.com/user-attachments/assets/64736ca8-42de-417e-9cb5-1f14353ff08f" alt="image" width="500">
+<img src="https://github.com/user-attachments/assets/a5e84f78-e536-4de8-95f4-7326b7b78f3f" alt="image" width="500">    
+<img src="https://github.com/user-attachments/assets/64736ca8-42de-417e-9cb5-1f14353ff08f" alt="image" width="500">  
 
 Sign in:  
-<img src="https://github.com/user-attachments/assets/b9cd87aa-8590-4dd8-9ca7-280dd8a1e6a9" alt="image" width="500">  
+<img src="https://github.com/user-attachments/assets/b9cd87aa-8590-4dd8-9ca7-280dd8a1e6a9" alt="image" width="500">   
 
 ### Upload videos, edit and delete them
 

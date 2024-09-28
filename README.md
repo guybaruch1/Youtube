@@ -30,7 +30,7 @@ In the Wiki folder you can find installation and instruction for running the pro
 - [Web Client Set Up and Use](Wiki/03_web_client_set_up_and_use.md)
 - [Android Client Set Up and Use](Wiki/04_android_client_set_up_and_use.md)
 
+<img src="https://github.com/user-attachments/assets/7d638dec-77da-419c-a86c-eb04e8807275" alt="image" width="250">  
 <img src="https://github.com/user-attachments/assets/1d8422a5-e761-4584-93c7-6fd454506aa3" alt="image" width="500">  
-<img src="https://github.com/user-attachments/assets/7d638dec-77da-419c-a86c-eb04e8807275" alt="image" width="250">
 
 Enjoy the watch!

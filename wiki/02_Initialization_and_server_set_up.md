@@ -62,10 +62,9 @@ SECRET_KEY=your_secret_key
 Make sure port is ```8080``` and SECRET_KEY is ```your_secret_key``` as defined above. 
 However, you can choose your own MongoDB port.
 
-3. **Run the server** - start the development server using:
+3. **Run the server** - navigate to ```Youtube/server``` and start the development server using:
 
 ```bash
-cd Youtube/server
 npm install custom-env express body-parser cors mongoose path
 npm start
 ```

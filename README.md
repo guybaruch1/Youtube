@@ -25,10 +25,10 @@ so you can upload videos, write comments and see other user's profiles and their
 
 In the Wiki folder you can find installation and instruction for running the project as web and android clients:
 
-- [Project Introduction](Wiki/01_project_introduction.md)
-- [Initialization and Server Set Up](Wiki/02_Initialization_and_server_set_up.md)
-- [Web Client Set Up and Use](Wiki/03_web_client_set_up_and_use.md)
-- [Android Client Set Up and Use](Wiki/04_android_client_set_up_and_use.md)
+- [Project Introduction](wiki/01_project_introduction.md)
+- [Initialization and Server Set Up](wiki/02_Initialization_and_server_set_up.md)
+- [Web Client Set Up and Use](wiki/03_web_client_set_up_and_use.md)
+- [Android Client Set Up and Use](wiki/04_android_client_set_up_and_use.md)
 
 <img src="https://github.com/user-attachments/assets/1d8422a5-e761-4584-93c7-6fd454506aa3" alt="image" width="500">  
 <img src="https://github.com/user-attachments/assets/7d638dec-77da-419c-a86c-eb04e8807275" alt="image" width="150">  

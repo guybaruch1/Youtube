@@ -18,14 +18,14 @@ npm run build
 Assuming the server is already running, the application should now be running on [http://localhost:8080](http://localhost:8080).
 
 ## User Permissions
-Please notice that only logged-in users are able to perform the following actions:
+Only logged-in users are able to perform the following actions:
 - Upload a video
 - Edit or delete it's own videos
 - Edit or delete it's own account
 - Leave a comment or delete it
 - Get recommendations based on it's watch history
 
-Please note that in order to do all of these, our server gives the user a JWT when logging-in to the account, which expires within 1 hour. 
+In order to do all of these actions, our server gives the user a JWT when logging-in to the account, which expires within 1 hour. 
 After that time, the user will not be able to upload, edit or delete anything. The user can sign-out and then sign-in again and then will be able to perform these actions.
 
 ## Walk-Through - Use the Application

@@ -108,6 +108,7 @@ function WatchVideo({ addComment, editComment, deleteComment, currentUser, video
     }
 
     if (currentUser){
+      // Filtering videos happens inside fetchRecommendations function
       fetchRecommendations(videoId)
     } else{
       const filteredVideoList = videoList.filter(video => video._id !== videoId);

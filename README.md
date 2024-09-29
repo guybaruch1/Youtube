@@ -33,4 +33,4 @@ In the Wiki folder you can find installation and instruction for running the pro
 <img src="https://github.com/user-attachments/assets/1d8422a5-e761-4584-93c7-6fd454506aa3" alt="image" width="500">  
 <img src="https://github.com/user-attachments/assets/7d638dec-77da-419c-a86c-eb04e8807275" alt="image" width="150">  
 
-Enjoy the watch!
+**Enjoy the watch!**

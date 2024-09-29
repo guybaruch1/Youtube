@@ -51,7 +51,7 @@ db.videomodels.dropIndex("id_1")
 1. **Open your code editor/IDE**
 
 
-2. **Create a configuration file** - under server/config, create a file called ".env.local" which consist the following lines:
+2. **Create a configuration file** - under ```Youtube/server/config```, create a file called ```.env.local``` which consist the following lines:
 
 ```
 CONNECTION_STRING = "mongodb://localhost:YOUR_PORT_OF_CHOICE"

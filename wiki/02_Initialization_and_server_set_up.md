@@ -23,10 +23,10 @@ In order to show the users, videos and comments we created, you need to follow t
 
 **2. Import relevant collections**
 These instructions are for MongoDB compass, but you can also use shell if you wish.
-Go to Youtube/csv_files. There you can find 2 csv files for our collections.
-Under "test" database in MongoDB (you can use whatever MongoDB port you want), create two collections:
-1. usermodels
-2. videomodels
+Go to ```Youtube/csv_files```. There you can find 2 csv files for our collections.
+Under ```test``` database in MongoDB (you can use whatever MongoDB port you want), create two collections:
+1. ```usermodels```
+2. ```videomodels```
 
 for each one of them:
 - Click "ADD DATA +"

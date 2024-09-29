@@ -6,7 +6,7 @@ To run the project as a web client, follow these steps:
 
 ### Open your code editor/IDE:
 
-Assuming you opened the project in your code editor/IDE under Youtube folder, follow the next steps:
+Assuming you opened the project in your code editor/IDE under ```Youtube``` folder, follow the next steps:
 
 ### Install dependencies:
 ```bash

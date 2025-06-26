@@ -73,11 +73,6 @@ Choose your connected device or AVD from the list and click OK.
 
 The application should now be running on your selected Android device or emulator.
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/9799e5b3-2d96-4aac-93a0-a12750c2abb7" width="45%" />
-  <img src="https://github.com/user-attachments/assets/9efbac6f-ea3d-41e3-a91b-7a28f9c8b721" width="45%" />
-</p>
-
 ![371767249-1d8422a5-e761-4584-93c7-6fd454506aa3](https://github.com/user-attachments/assets/9799e5b3-2d96-4aac-93a0-a12750c2abb7)
 ![348525961-d51eca23-0507-4064-8849-e80edc0f2261](https://github.com/user-attachments/assets/9efbac6f-ea3d-41e3-a91b-7a28f9c8b721)
 <p align="center">

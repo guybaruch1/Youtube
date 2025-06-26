@@ -73,6 +73,10 @@ Choose your connected device or AVD from the list and click OK.
 
 The application should now be running on your selected Android device or emulator.
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/9799e5b3-2d96-4aac-93a0-a12750c2abb7" width="45%" />
+  <img src="https://github.com/user-attachments/assets/9efbac6f-ea3d-41e3-a91b-7a28f9c8b721" width="45%" />
+</p>
 
 ![371767249-1d8422a5-e761-4584-93c7-6fd454506aa3](https://github.com/user-attachments/assets/9799e5b3-2d96-4aac-93a0-a12750c2abb7)
 ![348525961-d51eca23-0507-4064-8849-e80edc0f2261](https://github.com/user-attachments/assets/9efbac6f-ea3d-41e3-a91b-7a28f9c8b721)
@@ -80,8 +84,4 @@ The application should now be running on your selected Android device or emulato
   <img src="https://github.com/user-attachments/assets/a9e23796-d1d6-4de9-8164-3396dbd642c1" width="45%" />
   <img src="https://github.com/user-attachments/assets/455b402f-7b28-42e2-b28f-056b813fb676" width="45%" />
 </p>
-
-![352764374-c0a2a379-8c50-467e-9e3f-21724ad76b42](https://github.com/user-attachments/assets/a9e23796-d1d6-4de9-8164-3396dbd642c1)
-![371767193-7d638dec-77da-419c-a86c-eb04e8807275](https://github.com/user-attachments/assets/455b402f-7b28-42e2-b28f-056b813fb676)
-
 

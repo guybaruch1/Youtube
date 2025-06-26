@@ -72,3 +72,6 @@ Click on the "Run" button (the green play button in the toolbar) or select Run >
 Choose your connected device or AVD from the list and click OK.
 
 The application should now be running on your selected Android device or emulator.
+
+
+![371767249-1d8422a5-e761-4584-93c7-6fd454506aa3](https://github.com/user-attachments/assets/9799e5b3-2d96-4aac-93a0-a12750c2abb7)
